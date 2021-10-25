@@ -1,6 +1,6 @@
 const apollo = require("apollo-fetch");
 const graphAirdrops = apollo.createApolloFetch({
-    uri: "https://api.thegraph.com/subgraphs/name/froid1911/aavegotchi-airdrops"
+    uri: "https://api.thegraph.com/subgraphs/id/QmXFW36DzWnPZv8Sxy1qMUS7Re6GPUsuPbzufrj4jzvezP"
 });
 
 export default async (gotchiId = null) => {
