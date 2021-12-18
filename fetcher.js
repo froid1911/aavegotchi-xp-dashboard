@@ -1,6 +1,6 @@
 const apollo = require("apollo-fetch");
 const graphAirdrops = apollo.createApolloFetch({
-    uri: "https://api.thegraph.com/subgraphs/id/QmXFW36DzWnPZv8Sxy1qMUS7Re6GPUsuPbzufrj4jzvezP"
+    uri: "https://api.thegraph.com/subgraphs/name/froid1911/aavegotchi-airdrops"
 });
 
 export default async (gotchiId = null) => {
@@ -32,7 +32,6 @@ export default async (gotchiId = null) => {
     }
 
     let result = await graphAirdrops({query})
-    console.log(result);
     let airdrops = result.data.airdropReceivers.map(e => {
         let date = new Date(e.timestamp * 1000)
         let amount = e.amount
