@@ -24,7 +24,9 @@ export default function Home() {
         event.preventDefault();
         let value = event.target.gotchiId.value;
         console.log(value);
-        setData(await fetcher(value));
+        let result = await fetcher(value);
+        console.log(result);
+        setData(result);
         setGotchiId(value);
     };
 
@@ -95,9 +97,9 @@ export default function Home() {
                                 </thead>
                                 <tbody>
                                     {data.airdrops &&
-                                        data.airdrops.map((e) => {
+                                        data.airdrops.map((e, i) => {
                                             return (
-                                                <tr>
+                                                <tr key={i}>
                                                     <td className="text-center">
                                                         {e.gotchi}
                                                     </td>
@@ -114,7 +116,7 @@ export default function Home() {
                                 </tbody>
                             </table>
                         </Col>
-                        {data && data.votes && data.votes.length > 0 && (
+                        {data.votes && data.votes.length > 0 && (
                             <Col>
                                 <h4>Owner voted on Proposals</h4>
                                 <table className="table">
@@ -122,25 +124,27 @@ export default function Home() {
                                         <th className="text-center">
                                             Proposal
                                         </th>
-                                        <th className="text-center">Choice</th>
                                         <th className="text-center">
                                             Voted at
                                         </th>
                                     </thead>
                                     <tbody>
-                                        {data.votes.map((e) => (
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href={`https://vote.aavegotchi.com/#/proposal/${e.proposal.id}`}
-                                                        target="_blank"
-                                                    >
-                                                        {e.proposal.title}
-                                                    </a>
-                                                </td>
-                                                <td className="text-center">
-                                                    {e.choice}
-                                                </td>
+                                        {data.votes.map((e, i) => (
+                                            <tr key={i}>
+                                                {e.proposal &&
+                                                    e.proposal.title && (
+                                                        <td>
+                                                            <a
+                                                                href={`https://vote.aavegotchi.com/#/proposal/${e.proposal.id}`}
+                                                                target="_blank"
+                                                            >
+                                                                {
+                                                                    e.proposal
+                                                                        .title
+                                                                }
+                                                            </a>
+                                                        </td>
+                                                    )}
                                                 <td className="text-center">
                                                     {new Date(
                                                         e.created * 1000
