@@ -51,7 +51,7 @@ export default async (gotchiId = null) => {
 
         // fetch snapshot votes
         let querySnapshotVotes = `{
-            votes(first:1000, where:{voter:"${owner}"}) {
+            votes(orderBy:"created", orderDirection:desc, first:1000, where:{voter:"${owner}"}) {
                 id
                 voter
                 proposal {
@@ -60,6 +60,7 @@ export default async (gotchiId = null) => {
                     end
                 }
                 choice
+                created
                 vp
             }
         }`;

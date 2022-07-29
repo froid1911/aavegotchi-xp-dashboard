@@ -123,7 +123,9 @@ export default function Home() {
                                             Proposal
                                         </th>
                                         <th className="text-center">Choice</th>
-                                        <th className="text-center">Ended</th>
+                                        <th className="text-center">
+                                            Voted at
+                                        </th>
                                     </thead>
                                     <tbody>
                                         {data.votes.map((e) => (
@@ -141,7 +143,7 @@ export default function Home() {
                                                 </td>
                                                 <td className="text-center">
                                                     {new Date(
-                                                        e.proposal.end * 1000
+                                                        e.created * 1000
                                                     ).toLocaleDateString()}
                                                 </td>
                                             </tr>
