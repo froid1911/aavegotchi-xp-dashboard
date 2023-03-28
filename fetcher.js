@@ -4,7 +4,7 @@ const graphAirdrops = apollo.createApolloFetch({
 });
 
 const graphCoreMatic = apollo.createApolloFetch({
-    uri: "https://api.thegraph.com/subgraphs/name/aavegotchi/aavegotchi-core-matic",
+    uri: "https://subgraph.satsuma-prod.com/tWYl5n5y04oz/aavegotchi/aavegotchi-core-matic/api",
 });
 
 const graphSnapshot = apollo.createApolloFetch({
